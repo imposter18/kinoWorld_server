@@ -4,7 +4,6 @@ const ApiError = require("../error/ApiError");
 class ReviewController {
 	async create(req, res) {
 		const { title, reviews, rating, type, filmId } = req.body;
-		console.log(title);
 		const review = await Review.create({
 			title,
 			reviews,

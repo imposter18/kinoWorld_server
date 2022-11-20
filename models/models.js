@@ -85,6 +85,9 @@ FavoritesFilms.belongsTo(Film);
 
 Film.hasMany(Review);
 Review.belongsTo(Film);
+//
+Film.hasMany(Rating);
+Rating.belongsTo(Film);
 
 Genre.belongsToMany(Countres, { through: TypeGenre });
 Countres.belongsToMany(Genre, { through: TypeGenre });

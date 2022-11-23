@@ -1,10 +1,19 @@
 const { Favorites, FavoritesFilms } = require("../models/models");
 const ApiError = require("../error/ApiError");
 
-class CountresController {
+class favoritesController {
 	async create(req, res) {
 		const { userId, filmId } = req.body;
 		const { id: favoriteId } = await Favorites.findOne({ where: { userId } });
+		const checkFavoritesFilms = await FavoritesFilms.findOne({
+			where: { favoriteId, filmId },
+		});
+		console.log("123123", checkFavoritesFilms);
+		if (checkFavoritesFilms) {
+			return res
+				.status(403)
+				.json({ message: "Такой фильм уже существует в вашей коллекции" });
+		}
 		const favoritesFilms = await FavoritesFilms.create({ favoriteId, filmId });
 		return res.json(favoritesFilms);
 	}
@@ -25,4 +34,4 @@ class CountresController {
 		return res.json(favoritesFilms);
 	}
 }
-module.exports = new CountresController();
+module.exports = new favoritesController();

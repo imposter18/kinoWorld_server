@@ -42,7 +42,7 @@ const Countres = sequelize.define("countres", {
 // });
 const Rating = sequelize.define("rating", {
 	id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
-	rate: { type: DataTypes.STRING, allowNull: false },
+	rate: { type: DataTypes.STRING, allowNull: false }, // type!
 });
 const Review = sequelize.define("review", {
 	id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
